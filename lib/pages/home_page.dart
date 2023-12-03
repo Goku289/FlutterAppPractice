@@ -6,12 +6,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Hello User"),
+        backgroundColor: Colors.indigo,
       ),
-      body: Container(
-        width: 200,
-        height: 200,
-        color: Colors.green,
-        child: Text('Welcome'),
+      body: Center(
+        child: Container(
+          child: Text('Welcome to your first project'),
+        ),
       ),
       drawer: Drawer(),
     );
