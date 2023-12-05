@@ -37,21 +37,21 @@ class MyDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(
-                Icons.email,
+                CupertinoIcons.profile_circled,
                 color: Colors.white,
               ),
               title: Text(
-                "Email Me",
+                "Progile",
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
             ),
             ListTile(
               leading: Icon(
-                CupertinoIcons.profile_circled,
+                Icons.mail,
                 color: Colors.white,
               ),
               title: Text(
-                "Profile",
+                "Email Me",
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
             ),
