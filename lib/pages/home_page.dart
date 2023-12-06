@@ -21,7 +21,6 @@ class _MyHomePageState extends State<MyHomePage> {
     await Future.delayed(Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
-    // print(catalogJson);
     final decodedData = jsonDecode(catalogJson);
     var productData = decodedData["products"];
     CatalogModel.items =
@@ -39,14 +38,31 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CatalogModel.items.isNotEmpty
-            ? ListView.builder(
-                itemCount: CatalogModel.items.length,
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16),
                 itemBuilder: (context, index) {
-                  return ItemWidgets(
-                    item: CatalogModel.items[index],
-                  );
+                  final item = CatalogModel.items[index];
+                  return Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: GridTile(
+                          header: Container(
+                            decoration: BoxDecoration(color: Colors.deepPurple),
+                            padding: const EdgeInsets.all(12),
+                            child: Text(
+                              item.name.toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          footer: Text(item.price.toString()),
+                          child: Image.network(item.image.toString(),)));
                 },
+                itemCount: CatalogModel.items.length,
               )
             : Center(
                 child: CircularProgressIndicator(),
