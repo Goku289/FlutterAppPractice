@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/util/routes.dart';
+import 'package:flutter_catalog/widgets/themes.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -56,11 +57,11 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         TextFormField(
                           decoration: InputDecoration(
-                              hintText: "Enter UserName",
+                              hintText: "Enter Your Name",
                               labelText: "UserName"),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Username cannot be empty";
+                              return "Name cannot be empty";
                             }
                             return null;
                           },
@@ -88,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 40,
                         ),
                         Material(
-                          color: Colors.deepPurple,
+                          color: MyTheme.darkBluishColor,
                           borderRadius:
                               BorderRadius.circular(changeButton ? 40 : 8),
                           child: InkWell(
