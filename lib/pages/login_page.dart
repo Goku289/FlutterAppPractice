@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/util/routes.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SafeArea(
           child: SingleChildScrollView(
             child: Form(
@@ -45,7 +45,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Text(
                     "Welcome $name",
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'FontMain',
+                        color: context.theme.primaryColorLight),
                   ),
                   SizedBox(
                     height: 20,
@@ -56,6 +60,8 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         TextFormField(
+                          style:
+                              TextStyle(color: context.theme.primaryColorLight),
                           decoration: InputDecoration(
                               hintText: "Enter Your Name",
                               labelText: "UserName"),
@@ -71,6 +77,8 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                         TextFormField(
+                          style:
+                              TextStyle(color: context.theme.primaryColorLight),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Password cannot be empty";
@@ -89,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 40,
                         ),
                         Material(
-                          color: MyTheme.darkBluishColor,
+                          color: context.theme.highlightColor,
                           borderRadius:
                               BorderRadius.circular(changeButton ? 40 : 8),
                           child: InkWell(

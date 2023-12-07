@@ -16,10 +16,12 @@ class HomeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: MyTheme.creamColor,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -34,11 +36,11 @@ class HomeDetailsPage extends StatelessWidget {
             ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(MyTheme.darkBluishColor),
+                      backgroundColor: MaterialStateProperty.all(
+                          context.theme.highlightColor),
                     ),
-                    child: "Buy".text.color(MyTheme.creamColor).make())
-                .wh(100, 50)
+                    child: "Add to Cart".text.color(MyTheme.creamColor).make())
+                .wh(125, 50)
           ],
         ).p16(),
       ),
@@ -56,17 +58,26 @@ class HomeDetailsPage extends StatelessWidget {
             edge: VxEdge.top,
             child: Container(
               width: double.infinity,
-              color: Colors.white,
+              color: context.cardColor,
               child: Column(
                 children: [
                   catalog.name!.text.xl4.bold
                       .fontFamily('FontMain')
-                      .color(MyTheme.darkBluishColor)
+                      .color(context.theme.primaryColorLight)
                       .make(),
                   catalog.desc!.text.xl
+                      .color(context.theme.primaryColorLight)
                       .fontFamily('FontMain')
                       .textStyle(context.captionStyle)
                       .make(),
+                  10.heightBox,
+                  "Sed at consetetur voluptua ea sed. Kasd et sanctus sed accusam accusam. Duo et dolore eos dolor amet. Eos accusam vero dolor sed, ipsum amet sanctus et eirmod duo, dolor rebum gubergren sanctus ipsum takimata justo, sed dolor eos ipsum lorem consetetur, lorem sit amet lorem vero diam ipsum. Kasd."
+                      .text
+                      .color(context.theme.primaryColorLight)
+                      .textStyle(context.captionStyle)
+                      .fontFamily('FontMain')
+                      .make()
+                      .p16()
                 ],
               ).py64(),
             ),

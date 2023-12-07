@@ -51,10 +51,11 @@ class CatalogItem extends StatelessWidget {
           children: [
             catalog.name!.text.xl.bold
                 .fontFamily('FontMain')
-                .color(MyTheme.darkBluishColor)
+                .color(context.theme.primaryColorLight)
                 .make(),
             catalog.desc!.text
                 .fontFamily('FontMain')
+                .color(context.theme.primaryColorLight)
                 .textStyle(context.captionStyle)
                 .make(),
             10.heightBox,
@@ -66,15 +67,16 @@ class CatalogItem extends StatelessWidget {
                     .text
                     .bold
                     .xl
+                    .color(context.theme.primaryColorLight)
                     .fontFamily('FontMain')
                     .make(),
                 ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(MyTheme.darkBluishColor),
+                      backgroundColor: MaterialStateProperty.all(
+                          context.theme.highlightColor),
                     ),
-                    child: "Buy"
+                    child: "Add to cart"
                         .text
                         .color(MyTheme.creamColor)
                         .fontFamily('FontMain')
@@ -85,6 +87,6 @@ class CatalogItem extends StatelessWidget {
           ],
         ))
       ],
-    )).white.roundedLg.square(150).make().py16();
+    )).color(context.cardColor).roundedLg.square(150).make().py16();
   }
 }
